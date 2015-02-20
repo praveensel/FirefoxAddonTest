@@ -8,7 +8,7 @@
             <!-- Base functionality tests -->
             <class name="Testcases.AmoDetails_Test">
                 <methods>
-                    <include name="Statistics_verify_Group_by_period_menu"  />
+                    <include name="Check_that_Category_link_loads_respective_category_landing_page"  />
                 </methods>
             </class>
 
