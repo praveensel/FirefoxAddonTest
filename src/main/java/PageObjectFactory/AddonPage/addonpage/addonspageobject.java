@@ -92,7 +92,7 @@ public class addonspageobject extends mozBasePageObject{
 
         driver.navigate().to("https://addons.mozilla.org/en-US/firefox/");
     }
-
+   //for commit
     public void TypeSearchTerm(String Searchterm) {
         waitForElementVisibleByElement(search_q);
         sendKeys(search_q, Searchterm);
