@@ -1,5 +1,6 @@
 package Testcases;
 
+import Common.properties.Credentials;
 import Common.templates.NewTestTemplate;
 import Common.templates.NewTestTemplateBeforeClass;
 import PageObjectFactory.AddonPage.addonpage.addonspageobject;
@@ -15,6 +16,9 @@ import java.util.List;
  * Created by praveen on 2/13/2015.
  */
 public class AmoDetails_Test extends NewTestTemplateBeforeClass {
+
+    Credentials credentials = config.getCredentials();
+
 
     @Test()
     public void Statistics_verify_Group_by_period_menu()
@@ -69,7 +73,7 @@ public class AmoDetails_Test extends NewTestTemplateBeforeClass {
         mozBasePageObject base = new mozBasePageObject(driver);
         base.Openaddonspageobject(baseurl);
         addonspageobject.click_login();
-        addonspageobject.login_to_addon_page();
+        addonspageobject.login_to_addon_page(credentials.userName,credentials.password);
         addonspageobject.mouseover_username();
         addonspageobject.verify_account_drop_down_after_logging() ;
         addonspageobject.mousehover_tools();
@@ -102,6 +106,7 @@ public class AmoDetails_Test extends NewTestTemplateBeforeClass {
 
     public void Check_that_Category_link_loads_respective_category_landing_page()
     {
+       System.out.println(System.getenv("SAUCE_ACCESS_KEY"));
         addonspageobject addonspageobject= PageFactory.initElements(driver, addonspageobject.class);
         mozBasePageObject base = new mozBasePageObject(driver);
         base.Openaddonspageobject(baseurl);
