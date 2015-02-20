@@ -5,4 +5,4 @@ env:
     - secure: PVLWgd9wXtfOJKJTFPi7hV/2/QBvwp1XHTH2Pz2K2nbjXqWWY7/Vwl/krFvEVyerRHybzJ97QVISHyRa4zLjGkszKWMu51Vynj9Zcy2TNXfJHSAURvMTWLdq2DmQSRXrBFo7884B7hcML7pVx23MT9vI65CIKTpSI5l7nZyyJXM=
     - secure: iH3zTrzZ6JYOIfeo+eMTt2Dfq0pKT2jvllfmyJIJF7Sje5Xs6p45DbuUedFkKSxEDmybtMXRCYTUW9hHzbPG1amzxxubQ6wAoJHPoo0JPaSb601vWxRoOse1ZHBNGLy/g8vra3BkiGIA95+64oAQlsdt6GM6PuZxIubmRYvfYTA=
 
-
+script: mvn -Dsaucename=praveenopen -Dsaucekey=59830265-1f6e-4328-ae95-a30fefd8f5d3 test
