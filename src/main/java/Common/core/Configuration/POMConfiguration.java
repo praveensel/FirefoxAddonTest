@@ -9,7 +9,7 @@ public class POMConfiguration extends AbstractConfiguration {
 
     private String browser;
     private String env;
-    private String wikiName;
+    private String runmode;
     private String captchaPath;
     private String credentialsFilePath;
 
@@ -24,9 +24,9 @@ public class POMConfiguration extends AbstractConfiguration {
             env = "prod"; //Set default value to production
         }
 
-        wikiName = System.getProperty("wiki-name");
-        if (wikiName == null || wikiName.isEmpty()) {
-            wikiName = "mediawiki119"; //Set default value to mediawiki119
+        runmode = System.getProperty("runmode");
+        if (runmode == null || runmode.isEmpty()) {
+            runmode = "local"; //Set default value to mediawiki119
         }
 
         credentialsFilePath = System.getProperty("config");
@@ -58,6 +58,11 @@ public class POMConfiguration extends AbstractConfiguration {
     @Override
     public String getPlatform() {
         return System.getProperty("platform");
+    }
+
+    @Override
+    public String getRunmode() {
+        return this.runmode;
     }
 
     @Override

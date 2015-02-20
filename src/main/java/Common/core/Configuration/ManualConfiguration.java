@@ -58,6 +58,11 @@ public class ManualConfiguration extends AbstractConfiguration {
     }
 
     @Override
+    public String getRunmode() {
+        return null;
+    }
+
+    @Override
     public String getDeviceId() {
         return config.get("device-id");
     }

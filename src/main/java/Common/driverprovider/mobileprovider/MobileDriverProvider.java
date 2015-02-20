@@ -20,6 +20,7 @@ public class MobileDriverProvider {
   private String deviceId;
   private String mobileConfig;
   private String browser;
+    private String runmode;
 
   public MobileDriverProvider(AbstractConfiguration config) {
     platform = config.getPlatform();
@@ -27,13 +28,15 @@ public class MobileDriverProvider {
     deviceId = config.getDeviceId();
     mobileConfig = config.geMobileConfig();
     browser = config.getBrowser();
+      runmode=config.getRunmode();
+
   }
 
   public WebDriver getDriverInstance() {
     WebDriver driver = null;
 
     if ("CHROMEMOBILE".equals(browser) || "CHROMEMOBILEMERCURY".equals(browser)) {
-      return NewDriverProvider.getDriverInstanceForBrowser(browser, platform);
+      return NewDriverProvider.getDriverInstanceForBrowser(browser, platform, runmode);
     }
 
     switch (platform.toUpperCase()) {

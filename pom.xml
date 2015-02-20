@@ -185,6 +185,7 @@
                         <browser>FF</browser>
                         <env>pro</env>
                         <platform>VISTA</platform>
+                        <runmode>local</runmode>
                         <platform-version>${platform-version}</platform-version>
                         <mobile-config>/selenium-config/mobile-config.xml</mobile-config>
                         <config>/selenium-config/config.xml</config>

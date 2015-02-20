@@ -19,6 +19,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
@@ -42,6 +43,7 @@ public class NewDriverProvider {
     private static EventFiringWebDriver driverFF;
     private static String browserName;
     private static String platformName;
+    private static String runmode;
     private static DesiredCapabilities caps = new DesiredCapabilities();
     private static FirefoxProfile firefoxProfile = new FirefoxProfile();
 
@@ -50,9 +52,10 @@ public class NewDriverProvider {
     private static boolean unstablePageLoadStrategy = false;
     private static AndroidDriver mobileDriver;
 
-    public static WebDriver getDriverInstanceForBrowser(String browser, String platform) {
+    public static WebDriver getDriverInstanceForBrowser(String browser, String platform, String mode) {
         browserName = browser;
         platformName=platform;
+        runmode=mode;
         //If browser equals IE set driver property as IEWebDriver instance
         if ("IE".equals(browserName)) {
             driver = getIEInstance();
@@ -203,12 +206,21 @@ public class NewDriverProvider {
        caps.setCapability(FirefoxDriver.PROFILE, firefoxProfile);
        caps.setCapability(CapabilityType.PLATFORM, platformName);
        caps.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,"20");
+        caps.setCapability(CapabilityType.BROWSER_NAME,"Firefox");
 
 
         //Adding console logging for FF browser
         setBrowserLogging(Level.SEVERE);
 
+        if(runmode.equalsIgnoreCase("sauce"))
+        {
+            try {
+                return new EventFiringWebDriver(new RemoteWebDriver(new URL("http://praveenopen:59830265-1f6e-4328-ae95-a30fefd8f5d3@ondemand.saucelabs.com:80/wd/hub"),caps));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
 
+        }
         return new EventFiringWebDriver(new FirefoxDriver(caps));
     }
 

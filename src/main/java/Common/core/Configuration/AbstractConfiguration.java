@@ -19,6 +19,8 @@ public abstract class AbstractConfiguration {
 
     public abstract String getPlatform();
 
+    public abstract String getRunmode();
+
     public abstract String getDeviceId();
 
     public abstract String geMobileConfig();
