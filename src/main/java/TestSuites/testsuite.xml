@@ -7,9 +7,9 @@
         <classes>
             <!-- Base functionality tests -->
             <class name="Testcases.AmoDetails_Test">
-               <!-- <methods>
+                <methods>
                     <include name="Statistics_verify_Group_by_period_menu"  />
-                </methods>-->
+                </methods>
             </class>
 
 
