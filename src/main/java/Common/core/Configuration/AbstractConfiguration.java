@@ -34,4 +34,8 @@ public abstract class AbstractConfiguration {
     public abstract String getDeviceName();
 
     public abstract String getAppiumIp();
+
+    public abstract String getSaucename();
+
+    public abstract String getSaucekey();
 }

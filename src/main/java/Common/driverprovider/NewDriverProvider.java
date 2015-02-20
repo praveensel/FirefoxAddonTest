@@ -52,10 +52,15 @@ public class NewDriverProvider {
     private static boolean unstablePageLoadStrategy = false;
     private static AndroidDriver mobileDriver;
 
+    private static String saucekey;
+    private static String saucename;
+
     public static WebDriver getDriverInstanceForBrowser(String browser, String platform, String mode) {
         browserName = browser;
         platformName=platform;
         runmode=mode;
+        saucekey=System.getProperty("saucekey");
+        saucename=System.getProperty("saucename");
         //If browser equals IE set driver property as IEWebDriver instance
         if ("IE".equals(browserName)) {
             driver = getIEInstance();
@@ -215,7 +220,7 @@ public class NewDriverProvider {
         if(runmode.equalsIgnoreCase("sauce"))
         {
             try {
-                return new EventFiringWebDriver(new RemoteWebDriver(new URL("http://praveenopen:59830265-1f6e-4328-ae95-a30fefd8f5d3@ondemand.saucelabs.com:80/wd/hub"),caps));
+                return new EventFiringWebDriver(new RemoteWebDriver(new URL("http://"+saucename+":"+saucekey+"@ondemand.saucelabs.com:80/wd/hub"),caps));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }

@@ -185,10 +185,12 @@
                         <browser>FF</browser>
                         <env>pro</env>
                         <platform>VISTA</platform>
-                        <runmode>local</runmode>
+                        <runmode>sauce</runmode>
                         <platform-version>${platform-version}</platform-version>
                         <mobile-config>/selenium-config/mobile-config.xml</mobile-config>
                         <config>/selenium-config/config.xml</config>
+                        <saucename>${saucename}</saucename>
+                        <saucekey>${saucekey}</saucekey>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>${testSuite}</suiteXmlFile>

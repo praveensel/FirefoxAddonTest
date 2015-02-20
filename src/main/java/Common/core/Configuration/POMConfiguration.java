@@ -10,7 +10,8 @@ public class POMConfiguration extends AbstractConfiguration {
     private String browser;
     private String env;
     private String runmode;
-    private String captchaPath;
+    private String sauce_name;
+    private String sauce_key;
     private String credentialsFilePath;
 
     public POMConfiguration() {
@@ -30,7 +31,8 @@ public class POMConfiguration extends AbstractConfiguration {
         }
 
         credentialsFilePath = System.getProperty("config");
-        captchaPath = System.getProperty("captcha");
+        sauce_name = System.getProperty("saucename");
+        sauce_key = System.getProperty("saucekey");
     }
 
     @Override
@@ -89,6 +91,12 @@ public class POMConfiguration extends AbstractConfiguration {
     public String getAppiumIp() {
         return null;
     }
+
+    @Override
+    public String getSaucename() {return this.sauce_name;}
+
+    @Override
+    public String getSaucekey() {return this.sauce_key; }
 
 
 }

@@ -87,6 +87,16 @@ public class ManualConfiguration extends AbstractConfiguration {
         return null;
     }
 
+    @Override
+    public String getSaucename() {
+        return null;
+    }
+
+    @Override
+    public String getSaucekey() {
+        return null;
+    }
+
 
 }
 
