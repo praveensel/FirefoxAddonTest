@@ -79,7 +79,7 @@ public class addonspageobject extends mozBasePageObject{
     @FindBy(css="#sorter > ul > li.extras > ul > li:nth-child(3) > a")
     public WebElement RecentlyUpdated_Searchresult;
 
-    @FindBy(partialLinkText = "Video Category")
+    @FindBy(xpath = "//div[@class='wrap']/ul/li[2]/a/em")
     public WebElement dropdown_suggestion_video;
 
 

@@ -21,3 +21,4 @@ config.yml
 Firefox.iml
 .idea
 logs
+src/main/java/TestSuites/loadyml.java
