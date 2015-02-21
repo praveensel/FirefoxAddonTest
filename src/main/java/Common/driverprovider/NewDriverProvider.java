@@ -59,8 +59,8 @@ public class NewDriverProvider {
         browserName = browser;
         platformName=platform;
         runmode=mode;
-        saucekey=System.getProperty("saucekey");
-        saucename=System.getProperty("saucename");
+        saucekey=System.getenv("SAUCE_ACCESS_KEY");
+        saucename=System.getenv("SAUCE_USERNAME")  ;
         //If browser equals IE set driver property as IEWebDriver instance
         if ("IE".equals(browserName)) {
             driver = getIEInstance();
