@@ -106,7 +106,7 @@ public class AmoDetails_Test extends NewTestTemplateBeforeClass {
 
     public void Check_that_Category_link_loads_respective_category_landing_page()
     {
-       System.out.println("heeeeeeee"+System.getenv("SAUCE_ACCESS_KEY"));
+       System.out.println("heeeeeeee"+System.getenv("SAUCE_USERNAME"));
         addonspageobject addonspageobject= PageFactory.initElements(driver, addonspageobject.class);
         mozBasePageObject base = new mozBasePageObject(driver);
         base.Openaddonspageobject(baseurl);
