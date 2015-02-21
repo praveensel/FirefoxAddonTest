@@ -122,8 +122,9 @@ public class Credentials {
   public String apiToken;
 
   public Credentials(File credentialsFile) {
-    userName = XMLFunctions.getXMLConfiguration(credentialsFile, "firefox.addon.username");
-    password = XMLFunctions.getXMLConfiguration(credentialsFile, "firefox.addon.password");
+      System.out.println(credentialsFile.getAbsolutePath());
+    userName = XMLFunctions.getXMLConfiguration(credentialsFile, "addon.username");
+    password = XMLFunctions.getXMLConfiguration(credentialsFile, "addon.password");
 //    userName2 = XMLFunctions.getXMLConfiguration(credentialsFile, "ci.user.regular2.username");
 //    password2 = XMLFunctions.getXMLConfiguration(credentialsFile, "ci.user.regular2.password");
 //    userName3 = XMLFunctions.getXMLConfiguration(credentialsFile, "ci.user.regular3.username");

@@ -150,13 +150,13 @@ public class addonspageobject extends mozBasePageObject{
         login_addonpage.click();
     }
 
-    public void login_to_addon_page()
+    public void login_to_addon_page(String userName, String password)
     {
         click_login();
         waitForElementByElement(email_id);
-        email_id.sendKeys("praveen.k.be@gmail.com");
+        email_id.sendKeys(userName);
         waitForElementByElement(password_field);
-        password_field.sendKeys("billyjean");
+        password_field.sendKeys(password);
         waitForElementByElement(submit_btn);
         submit_btn.click();
         PageObjectLogging.log(
