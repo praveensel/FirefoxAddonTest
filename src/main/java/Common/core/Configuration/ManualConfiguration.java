@@ -36,15 +36,14 @@ public class ManualConfiguration extends AbstractConfiguration {
     }
 
     @Override
-    public String getWikiName() {
-        return null;
+    public String getbrowserVer() {return config.get("browser_ver");
+
     }
 
     @Override
     public String getEnv() {
         return config.get("env");
     }
-
 
 
     @Override
@@ -59,32 +58,12 @@ public class ManualConfiguration extends AbstractConfiguration {
 
     @Override
     public String getRunmode() {
-        return null;
-    }
-
-    @Override
-    public String getDeviceId() {
-        return config.get("device-id");
-    }
-
-    @Override
-    public String geMobileConfig() {
-        return config.get("mobile-config");
+        return config.get("runmode");
     }
 
     @Override
     public String getCredentialsFilePath() {
         return config.get("credentialsPath");
-    }
-
-    @Override
-    public String getDeviceName() {
-        return null;
-    }
-
-    @Override
-    public String getAppiumIp() {
-        return null;
     }
 
     @Override
@@ -96,7 +75,6 @@ public class ManualConfiguration extends AbstractConfiguration {
     public String getSaucekey() {
         return null;
     }
-
 
 }
 

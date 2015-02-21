@@ -8,7 +8,7 @@ public class ConfigurationFactory {
     public static AbstractConfiguration getConfig() {
 
         if (System.getProperty("run_mvn") == null || "false".equals(System.getProperty("run_mvn"))) {
-            return new POMConfiguration();
+            return new ManualConfiguration();
         } else {
             return new POMConfiguration();
         }

@@ -8,6 +8,9 @@ import java.io.File;
 public class POMConfiguration extends AbstractConfiguration {
 
     private String browser;
+    private String browserVer;
+    private String platform;
+    private String platformVer;
     private String env;
     private String runmode;
     private String sauce_name;
@@ -30,6 +33,25 @@ public class POMConfiguration extends AbstractConfiguration {
             runmode = "local"; //Set default value to mediawiki119
         }
 
+        browserVer=System.getProperty("browserVer")
+        ;
+        if(browserVer==null || browserVer.isEmpty() )
+        {
+            browserVer="ANY";
+        }
+
+        platform=System.getProperty("platform");
+        if(platform==null || platform.isEmpty() )
+        {
+            platform="ANY";
+        }
+
+        platformVer=System.getProperty("platform-version");
+        if(platformVer==null || platformVer.isEmpty() )
+        {
+            platformVer="ANY";
+        }
+
         credentialsFilePath = System.getProperty("config");
         sauce_name = System.getProperty("saucename");
         sauce_key = System.getProperty("saucekey");
@@ -41,25 +63,19 @@ public class POMConfiguration extends AbstractConfiguration {
     }
 
     @Override
-    public String getWikiName() {
-        return null;
-    }
+    public String getbrowserVer() {     return this.browserVer;   }
 
     @Override
     public String getEnv() {
         return this.env;
     }
 
-
-
     @Override
-    public String getPlatformVersion() {
-        return System.getProperty("platform-version");
-    }
+    public String getPlatformVersion() {  return this.platformVer ;  }
 
     @Override
     public String getPlatform() {
-        return System.getProperty("platform");
+        return this.platform;
     }
 
     @Override
@@ -68,29 +84,7 @@ public class POMConfiguration extends AbstractConfiguration {
     }
 
     @Override
-    public String getDeviceId() {
-        return System.getProperty("deviceId");
-    }
-
-    @Override
-    public String geMobileConfig() {
-        return System.getProperty("mobile-config");
-    }
-
-    @Override
-    public String getCredentialsFilePath() {
-        return this.credentialsFilePath;
-    }
-
-    @Override
-    public String getDeviceName() {
-        return null;
-    }
-
-    @Override
-    public String getAppiumIp() {
-        return null;
-    }
+    public String getCredentialsFilePath() { return this.credentialsFilePath; }
 
     @Override
     public String getSaucename() {return this.sauce_name;}

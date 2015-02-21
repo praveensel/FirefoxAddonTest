@@ -11,7 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
-        <mvn.run>true</mvn.run>
+        <mvn.run>false</mvn.run>
         <testSuite>TestSuites\testsuite.xml</testSuite>
         <webdriver.version>2.43.1</webdriver.version>
     </properties>
@@ -183,11 +183,11 @@
                         <base-address>https://addons.mozilla.org/</base-address>
                         <live-domain>https://addons.mozilla.org/}</live-domain>
                         <browser>FF</browser>
+                        <browserVer>ANY</browserVer>
                         <env>pro</env>
                         <platform>VISTA</platform>
-                        <runmode>sauce</runmode>
-                        <platform-version>${platform-version}</platform-version>
-                        <mobile-config>/selenium-config/mobile-config.xml</mobile-config>
+                        <runmode>local</runmode>
+                        <platform-version>ANY</platform-version>
                         <config>/selenium-config/config.xml</config>
                         <saucename>${saucename}</saucename>
                         <saucekey>${saucekey}</saucekey>

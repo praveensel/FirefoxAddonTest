@@ -11,7 +11,7 @@ import java.io.File;
 public abstract class AbstractConfiguration {
     public abstract String getBrowser();
 
-    public abstract String getWikiName();
+    public abstract String getbrowserVer();
 
     public abstract String getEnv();
 
@@ -21,19 +21,12 @@ public abstract class AbstractConfiguration {
 
     public abstract String getRunmode();
 
-    public abstract String getDeviceId();
-
-    public abstract String geMobileConfig();
 
     public abstract String getCredentialsFilePath();
 
     public Credentials getCredentials() {
         return new Credentials(new File(this.getCredentialsFilePath()));
     }
-
-    public abstract String getDeviceName();
-
-    public abstract String getAppiumIp();
 
     public abstract String getSaucename();
 

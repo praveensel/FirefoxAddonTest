@@ -42,6 +42,8 @@ public class NewDriverProvider {
     private static EventFiringWebDriver driver;
     private static EventFiringWebDriver driverFF;
     private static String browserName;
+    private static String browserVersion;
+    private static String platformVersion;
     private static String platformName;
     private static String runmode;
     private static DesiredCapabilities caps = new DesiredCapabilities();
@@ -55,12 +57,14 @@ public class NewDriverProvider {
     private static String saucekey;
     private static String saucename;
 
-    public static WebDriver getDriverInstanceForBrowser(String browser, String platform, String mode) {
+    public static WebDriver getDriverInstanceForBrowser(String browser,String browserv, String platform,String platformVer, String mode) {
         browserName = browser;
+        browserVersion=browserv;
         platformName=platform;
+        platformVersion=platformVer;
         runmode=mode;
         saucekey=System.getenv("SAUCE_ACCESS_KEY");
-        saucename=System.getenv("SAUCE_USERNAME")  ;
+        saucename=System.getenv("SAUCE_USERNAME");
         //If browser equals IE set driver property as IEWebDriver instance
         if ("IE".equals(browserName)) {
             driver = getIEInstance();
@@ -82,7 +86,7 @@ public class NewDriverProvider {
         } else if ("GHOST".equals(browserName)) {
             driver = getPhantomJSInstance();
         } else if (browserName.equals("ANDROID")) {
-            driver = getAndroidInstance();
+            //driver = getAndroidInstance();
         } else {
             throw new RuntimeException("Provided driver is not supported.");
         }
@@ -128,7 +132,7 @@ public class NewDriverProvider {
         return new EventFiringWebDriver(new InternetExplorerDriver(caps));
     }
 
-    private static EventFiringWebDriver getAndroidInstance() {
+  /*  private static EventFiringWebDriver getAndroidInstance() {
         DesiredCapabilities destCaps = new DesiredCapabilities();
         destCaps.setCapability("deviceName",
                 ConfigurationFactory.getConfig().getDeviceName().toString());
@@ -144,7 +148,7 @@ public class NewDriverProvider {
 
         return new EventFiringWebDriver(mobileDriver);
     }
-
+*/
 
     private static EventFiringWebDriver getFFInstance() {
         //Windows 8 requires to set webdriver.firefox.bin system variable
@@ -212,6 +216,7 @@ public class NewDriverProvider {
        caps.setCapability(CapabilityType.PLATFORM, platformName);
        caps.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,"20");
         caps.setCapability(CapabilityType.BROWSER_NAME,"Firefox");
+        caps.setCapability(CapabilityType.VERSION,browserVersion);
 
 
         //Adding console logging for FF browser
