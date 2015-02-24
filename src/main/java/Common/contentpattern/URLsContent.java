@@ -51,7 +51,7 @@ public class URLsContent {
     public static final String SPECIAL_MULTI_WIKI_FINDER = "wiki/Special:Multiwikifinder";
     public static final String LOGOUT = "en-US/firefox/users/logout";
     public static final String Search_Updated = "sort=updated";
-    public static final String SPECIAL_UNDELETE = "wiki/Special:Undelete";
+    public static final String Search_Created = "sort=created";
     public static final String USER_PROFILE = "wiki/User:%userName%";
     public static final String SPECIAL_CREATE_NEW_WIKI = "Special:CreateNewWiki";
     public static final String SPECIAL_WIKI_FACTORY = "wiki/Special:WikiFactory";

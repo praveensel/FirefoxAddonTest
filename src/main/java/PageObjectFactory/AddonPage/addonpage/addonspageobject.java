@@ -82,6 +82,26 @@ public class addonspageobject extends mozBasePageObject{
     @FindBy(xpath = "//div[@class='wrap']/ul/li[2]/a/em")
     public WebElement dropdown_suggestion_video;
 
+    @FindBy(css = "#sorter > ul > li:nth-child(4) > a")
+    public WebElement Newest_updated;
+
+    @FindBy(css="#sorter > ul > li:nth-child(2)")
+    public WebElement searchresults_sortby_relevance;
+
+    @FindBy(css="#sorter > ul > li:nth-child(3)")
+    public WebElement searchresults_sortby_mostusers;
+
+    @FindBy(css="#sorter > ul > li:nth-child(4)")
+    public WebElement searchresults_sortby_toprated;
+
+    @FindBy(css="#sorter > ul > li:nth-child(5)")
+    public WebElement searchresults_sortby_newest;
+
+    @FindBy(css="#sorter > ul > li.extras > a")
+    public WebElement searchresults_sortby_more;
+
+
+
 
     public addonspageobject(WebDriver adriver) {
         super(adriver);
@@ -229,6 +249,12 @@ public class addonspageobject extends mozBasePageObject{
         RecentlyUpdated_Searchresult.click();
     }
 
+    public void click_newest_from_sort_by()
+    {
+        waitForElementByElement(Newest_updated);
+        Newest_updated.click();
+    }
+
     public void verifyURL_Contains_updated()
     {
         addonspageobject addonspageobject=new addonspageobject(driver);
@@ -245,6 +271,23 @@ public class addonspageobject extends mozBasePageObject{
     public void verify_drop_down_suggestion()
     {
         waitForElementByElement(dropdown_suggestion_video);
+    }
+
+
+    public void verify_sort_by_menus_are_showing()
+    {
+        scrollToElement(searchresults_sortby_relevance);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_relevance));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_relevance_showing", true);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_mostusers));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_most_users_showing", true);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_toprated));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_top_rated_showing", true);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_newest));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_newest_showing", true);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_more));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_more_showing", true);
+
     }
 }
 

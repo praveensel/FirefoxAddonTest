@@ -1,11 +1,13 @@
 package Testcases;
 
+import Common.contentpattern.URLsContent;
 import Common.properties.Credentials;
 import Common.templates.NewTestTemplate;
 import Common.templates.NewTestTemplateBeforeClass;
 import PageObjectFactory.AddonPage.addonpage.addonspageobject;
 import PageObjectFactory.AddonPage.addonpage.mozBasePageObject;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
@@ -106,12 +108,50 @@ public class AmoDetails_Test extends NewTestTemplateBeforeClass {
 
     public void Check_that_Category_link_loads_respective_category_landing_page()
     {
-       System.out.println("heeeeeeee"+System.getenv("SAUCE_USERNAME"));
+        System.out.println("heeeeeeee"+System.getenv("SAUCE_USERNAME"));
         addonspageobject addonspageobject= PageFactory.initElements(driver, addonspageobject.class);
         mozBasePageObject base = new mozBasePageObject(driver);
         base.Openaddonspageobject(baseurl);
-        //addonspageobject.TypeSearchTerm("Video") ;
-        //addonspageobject.verify_drop_down_suggestion();
+        addonspageobject.TypeSearchTerm("Video") ;
+        addonspageobject.verify_drop_down_suggestion();
+    }
+
+    @Test
+    public void Sort_search_results_by_Newest()
+    {
+        addonspageobject addonspageobject= PageFactory.initElements(driver, addonspageobject.class);
+        mozBasePageObject base = new mozBasePageObject(driver);
+        base.Openaddonspageobject(baseurl);
+        addonspageobject.TypeSearchTerm("fire") ;
+        addonspageobject.click_search_button();
+        addonspageobject.click_newest_from_sort_by();
+        addonspageobject.waitForStringInURL("sort=");
+        addonspageobject.verifyURLcontains(URLsContent.Search_Created);
+    }
+
+    @Test
+    public void Sort_search_results_by_weekly()
+    {
+        addonspageobject addonspageobject= PageFactory.initElements(driver, addonspageobject.class);
+        mozBasePageObject base = new mozBasePageObject(driver);
+        base.Openaddonspageobject(baseurl);
+        addonspageobject.TypeSearchTerm("fire") ;
+        addonspageobject.click_search_button();
+        addonspageobject.click_newest_from_sort_by();
+        addonspageobject.waitForStringInURL("sort=");
+        addonspageobject.verifyURLcontains(URLsContent.Search_Created);
+    }
+
+
+    @Test
+    public void Verify_Sort_by_menu()
+    {
+        addonspageobject addonspageobject=PageFactory.initElements(driver,addonspageobject.class);
+        mozBasePageObject base = new mozBasePageObject(driver);
+        base.Openaddonspageobject(baseurl);
+        addonspageobject.TypeSearchTerm("fire") ;
+        addonspageobject.click_search_button();
+        addonspageobject.verify_sort_by_menus_are_showing();
     }
 
 
