@@ -58,13 +58,13 @@ public class NewTestTemplateCore {
 
   protected void startBrowser() {
     driver = registerDriverListener(
-        NewDriverProvider.getDriverInstanceForBrowser(config.getBrowser(),config.getbrowserVer(),config.getPlatform(),config.getPlatformVersion(),config.getRunmode())
+        NewDriverProvider.getDriverInstanceForBrowser(config.getBrowser(),config.getbrowserVer(),config.getPlatform(),config.getPlatformVersion(),config.getSaucemode())
     );
   }
 
   protected WebDriver startCustomBrowser(String browserName) {
     driver = registerDriverListener(
-        NewDriverProvider.getDriverInstanceForBrowser(config.getBrowser(),config.getbrowserVer(),config.getPlatform(),config.getPlatformVersion(),config.getRunmode())
+        NewDriverProvider.getDriverInstanceForBrowser(config.getBrowser(),config.getbrowserVer(),config.getPlatform(),config.getPlatformVersion(),config.getSaucemode())
     );
     return driver;
   }

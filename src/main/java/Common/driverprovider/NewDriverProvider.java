@@ -3,9 +3,6 @@ package Common.driverprovider;
 
 
 
-import Common.Logging.Global;
-import Common.Logging.PageObjectLogging;
-import Common.core.Configuration.ConfigurationFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,7 +21,6 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -45,7 +41,7 @@ public class NewDriverProvider {
     private static String browserVersion;
     private static String platformVersion;
     private static String platformName;
-    private static String runmode;
+    private static boolean saucemode;
     private static DesiredCapabilities caps = new DesiredCapabilities();
     private static FirefoxProfile firefoxProfile = new FirefoxProfile();
 
@@ -57,12 +53,12 @@ public class NewDriverProvider {
     private static String saucekey;
     private static String saucename;
 
-    public static WebDriver getDriverInstanceForBrowser(String browser,String browserv, String platform,String platformVer, String mode) {
+    public static WebDriver getDriverInstanceForBrowser(String browser,String browserv, String platform,String platformVer, boolean mode) {
         browserName = browser;
         browserVersion=browserv;
         platformName=platform;
         platformVersion=platformVer;
-        runmode=mode;
+        saucemode =mode;
         saucekey=System.getenv("SAUCE_ACCESS_KEY");
         saucename=System.getenv("SAUCE_USERNAME");
         //If browser equals IE set driver property as IEWebDriver instance
@@ -222,7 +218,7 @@ public class NewDriverProvider {
         //Adding console logging for FF browser
         setBrowserLogging(Level.SEVERE);
 
-        if(runmode.equalsIgnoreCase("sauce"))
+        if(saucemode)
         {
             try {
                 return new EventFiringWebDriver(new RemoteWebDriver(new URL("http://"+saucename+":"+saucekey+"@ondemand.saucelabs.com:80/wd/hub"),caps));

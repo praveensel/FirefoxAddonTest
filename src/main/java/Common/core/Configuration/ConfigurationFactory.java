@@ -8,6 +8,8 @@ public class ConfigurationFactory {
     public static AbstractConfiguration getConfig() {
 
         if (System.getProperty("run_mvn") == null || "false".equals(System.getProperty("run_mvn"))) {
+
+            System.out.println("Running with manual config file");
             return new ManualConfiguration();
         } else {
             return new POMConfiguration();

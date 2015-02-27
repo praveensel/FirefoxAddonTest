@@ -1,7 +1,5 @@
 package Common.core.Configuration;
 
-import java.io.File;
-
 /**
  * Created by praveen on 2/12/2015.
  */
@@ -12,7 +10,7 @@ public class POMConfiguration extends AbstractConfiguration {
     private String platform;
     private String platformVer;
     private String env;
-    private String runmode;
+    private boolean saucemode;
     private String sauce_name;
     private String sauce_key;
     private String credentialsFilePath;
@@ -28,10 +26,10 @@ public class POMConfiguration extends AbstractConfiguration {
             env = "prod"; //Set default value to production
         }
 
-        runmode = System.getProperty("runmode");
-        if (runmode == null || runmode.isEmpty()) {
-            runmode = "local"; //Set default value to mediawiki119
-        }
+        saucemode = Boolean.parseBoolean(System.getProperty("saucemode"));
+        /*if (saucemode == null) {
+            saucemode = "local"; //Set default value to mediawiki119
+        }*/
 
         browserVer=System.getProperty("browserVer")
         ;
@@ -79,8 +77,8 @@ public class POMConfiguration extends AbstractConfiguration {
     }
 
     @Override
-    public String getRunmode() {
-        return this.runmode;
+    public boolean getSaucemode() {
+        return this.saucemode;
     }
 
     @Override

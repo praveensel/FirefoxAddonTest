@@ -19,7 +19,7 @@ public abstract class AbstractConfiguration {
 
     public abstract String getPlatform();
 
-    public abstract String getRunmode();
+    public abstract boolean getSaucemode();
 
 
     public abstract String getCredentialsFilePath();

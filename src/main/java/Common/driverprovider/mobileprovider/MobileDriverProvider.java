@@ -3,7 +3,6 @@ package Common.driverprovider.mobileprovider;
 
 
 import Common.core.Configuration.AbstractConfiguration;
-import Common.driverprovider.NewDriverProvider;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,14 +19,14 @@ public class MobileDriverProvider {
   private String deviceId;
   private String mobileConfig;
   private String browser;
-    private String runmode;
+    private boolean runmode;
 
   public MobileDriverProvider(AbstractConfiguration config) {
     platform = config.getPlatform();
     platformVersion = config.getPlatformVersion();
 
     browser = config.getBrowser();
-      runmode=config.getRunmode();
+      runmode=config.getSaucemode();
 
   }
 

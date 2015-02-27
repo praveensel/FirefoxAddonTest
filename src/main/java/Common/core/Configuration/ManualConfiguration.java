@@ -14,6 +14,7 @@ import java.util.Map;
 public class ManualConfiguration extends AbstractConfiguration {
 
     private Map<String, String> config;
+    private  Map<String,Boolean> config1;
 
     public ManualConfiguration() {
         Yaml yaml = new Yaml();
@@ -57,9 +58,8 @@ public class ManualConfiguration extends AbstractConfiguration {
     }
 
     @Override
-    public String getRunmode() {
-        return config.get("runmode");
-    }
+    public boolean getSaucemode() {
+        return config.containsKey("saucemode");    }
 
     @Override
     public String getCredentialsFilePath() {

@@ -12,6 +12,7 @@
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         <mvn.run>false</mvn.run>
+        <sauce.run>false</sauce.run>
         <testSuite>TestSuites\testsuite.xml</testSuite>
         <webdriver.version>2.43.1</webdriver.version>
     </properties>
@@ -186,7 +187,7 @@
                         <browserVer>ANY</browserVer>
                         <env>pro</env>
                         <platform>VISTA</platform>
-                        <runmode>local</runmode>
+                        <saucemode>${sauce.run}</saucemode>
                         <platform-version>ANY</platform-version>
                         <config>/selenium-config/config.xml</config>
                         <saucename>${saucename}</saucename>
@@ -214,9 +215,10 @@
     </build>
     <profiles>
         <profile>
-            <id>manualConfig</id>
+            <id>SauceProfile</id>
             <properties>
-                <mvn.run>false</mvn.run>
+                <sauce.run>true</sauce.run>
+                <mvn.run>true</mvn.run>
             </properties>
         </profile>
     </profiles>
