@@ -11,8 +11,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
-        <mvn.run>false</mvn.run>
-        <sauce.run>false</sauce.run>
+        <mvn.run>true</mvn.run>
+        <sauce.run>true</sauce.run>
         <testSuite>TestSuites\testsuite.xml</testSuite>
         <webdriver.version>2.43.1</webdriver.version>
     </properties>
