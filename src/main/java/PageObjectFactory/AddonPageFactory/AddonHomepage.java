@@ -110,13 +110,12 @@ public class AddonHomepage extends mozBasePageObject {
     @FindBy(xpath="/html/body/div[2]/div[1]/div[2]/div[1]/form/div/div/ul/li")
     public WebElement addon_search_suggestions;
 
-
-
     @FindBy(css="#themes > a")
     public WebElement themesLink;
 
     @FindBy(css="#collections > a")
     public WebElement collectionsLink;
+
 
 
 

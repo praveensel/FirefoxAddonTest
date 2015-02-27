@@ -778,6 +778,13 @@ public void pressEnter(WebElement element) {
         actions.build().perform();
     }
 
+    public void pressEnter()
+    {
+        Actions actions=new Actions(driver);
+        actions.sendKeys(Keys.ENTER);
+        actions.build().perform();
+    }
+
 public void mousehover(WebElement element)
         {
         Actions actions=new Actions(driver);

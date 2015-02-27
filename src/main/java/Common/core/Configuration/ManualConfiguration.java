@@ -59,7 +59,8 @@ public class ManualConfiguration extends AbstractConfiguration {
 
     @Override
     public boolean getSaucemode() {
-        return config.containsKey("saucemode");    }
+
+        return config.containsKey("SAUCE");    }
 
     @Override
     public String getCredentialsFilePath() {

@@ -1,6 +1,7 @@
 package PageObjectFactory;
 
 import Common.Logging.PageObjectLogging;
+import PageObjectFactory.AddonPageFactory.AboutaddonPage;
 import PageObjectFactory.AddonPageFactory.AddonHomepage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -18,8 +19,15 @@ public class mozBasePageObject extends BasePageObject {
 
 
     public AddonHomepage Openaddonspageobject(String baseUrl) {
-        getUrl(baseUrl );
+      //  getUrl(baseUrl );
         PageObjectLogging.log("openAddOnPageObject", baseUrl + " opened", true);
         return new AddonHomepage(driver);
+    }
+
+    public AboutaddonPage openAboutaddon_page(String baseUrl)
+    {
+        getUrl(baseUrl );
+        PageObjectLogging.log("openAddOnPageObject", baseUrl + " opened", true);
+        return new AboutaddonPage(driver);
     }
 }

@@ -6,11 +6,12 @@
     <test name="testing" preserve-order="true"> <!-- parallel="classes" thread-count="2"  -->
         <classes>
             <!-- Base functionality tests -->
-            <class name="Testcases.AmoDetails_Test">
-                <methods>
+            <class name="Testcases.AmoDetails_Test"/>
+            <class name="Testcases.AboutaddonCases"/>
+               <!-- <methods>
                     <include name="Statistics_verify_Group_by_period_menu"  />
-                </methods>
-            </class>
+                </methods>-->
+
 
 
             <!--<class name="com.wikia.webdriver.testcases.createawikitests.CreateWikiTests_loggedOutUser"/>
