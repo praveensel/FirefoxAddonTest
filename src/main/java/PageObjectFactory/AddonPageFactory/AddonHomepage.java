@@ -1,9 +1,10 @@
-package PageObjectFactory.AddonPage.addonpage;
+package PageObjectFactory.AddonPageFactory;
 
 import Common.Logging.PageObjectLogging;
 import Common.contentpattern.URLsContent;
 import Common.core.Assertion;
-import org.bouncycastle.jcajce.provider.symmetric.ARC4;
+import PageObjectFactory.mozBasePageObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by praveen on 2/13/2015.
  */
-public class addonspageobject extends mozBasePageObject{
+public class AddonHomepage extends mozBasePageObject {
     @FindBy(id = "search-q")
     public WebElement search_q;
 
@@ -100,10 +101,30 @@ public class addonspageobject extends mozBasePageObject{
     @FindBy(css="#sorter > ul > li.extras > a")
     public WebElement searchresults_sortby_more;
 
+    @FindBy(css="#search-facets > ul > li")
+    public List<WebElement> filter_results;
+
+    @FindBy(xpath="/html/body/div[2]/div[1]/div[2]/div[1]/form/div/div/ul/li")
+    public List<WebElement> addon_search_suggestion;
+
+    @FindBy(xpath="/html/body/div[2]/div[1]/div[2]/div[1]/form/div/div/ul/li")
+    public WebElement addon_search_suggestions;
 
 
 
-    public addonspageobject(WebDriver adriver) {
+    @FindBy(css="#themes > a")
+    public WebElement themesLink;
+
+    @FindBy(css="#collections > a")
+    public WebElement collectionsLink;
+
+
+
+
+
+
+
+    public AddonHomepage(WebDriver adriver) {
         super(adriver);
 
     }
@@ -162,6 +183,19 @@ public class addonspageobject extends mozBasePageObject{
         getElementByText(criteria_range_island,"365 days");
         getElementByText(criteria_range_island,"Custom...");
         getElementbyValue(criteria_range_island,"30 days","selected");
+    }
+
+    public void verify_filter_results()
+
+
+    {
+        getElementByText(filter_results,"Category\n" +
+                "All Add-ons");
+        getElementByText(filter_results,"Works with\n" +
+                "Firefox 35.0");
+        getElementByText(filter_results,"FTag\n" +
+                "All Tags");
+
     }
 
     public void click_login()
@@ -257,8 +291,7 @@ public class addonspageobject extends mozBasePageObject{
 
     public void verifyURL_Contains_updated()
     {
-        addonspageobject addonspageobject=new addonspageobject(driver);
-        addonspageobject.verifyURLcontains(URLsContent.Search_Updated) ;
+        verifyURLcontains(URLsContent.Search_Updated) ;
     }
 
 
@@ -289,5 +322,67 @@ public class addonspageobject extends mozBasePageObject{
         PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_more_showing", true);
 
     }
+
+
+    public void verify_filter_results_menu()
+    {
+        scrollToElement(searchresults_sortby_relevance);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_relevance));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_relevance_showing", true);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_mostusers));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_most_users_showing", true);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_toprated));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_top_rated_showing", true);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_newest));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_newest_showing", true);
+        Assertion.assertTrue(checkIfElementOnPage(searchresults_sortby_more));
+        PageObjectLogging.log("verify_sort_by_menus_are_showing", "Sort_by_more_showing", true);
+
+    }
+
+    public String navigate_by_pressing_enter_on_suggestion_list()  {
+
+        int si=addon_search_suggestion.size();
+        WebElement el1=driver.findElement(By.xpath("//div[2]/div[1]/div[2]/div[1]/form/div/div/ul/li["+(si-(si-2))+"]/a/span"));
+        String elementtext=el1.getText();
+        pressEnter(el1);
+        return elementtext;
+
+    }
+
+    public String navigate_by_clicking_on_suggestion_list()  {
+
+        int si=addon_search_suggestion.size();
+        WebElement el1=driver.findElement(By.xpath("//div[2]/div[1]/div[2]/div[1]/form/div/div/ul/li["+(si-(si-2))+"]/a/span"));
+        String elementtext=el1.getText();
+        el1.click();
+        return elementtext;
+
+    }
+
+    public void click_themes()
+    {
+        waitForElementByElement(themesLink);
+        themesLink.click();
+    }
+
+    public void click_collections()
+
+    {
+        waitForElementByElement(collectionsLink);
+        collectionsLink.click();
+    }
+
+
+    public void check_search_suggestion_is_showing() {
+        Assertion.assertTrue(checkIfElementOnPage(addon_search_suggestions));
+        PageObjectLogging.log("check_search_suggestion_is_showing", "search suggestion is showing ", true);
+    }
+
+    public void check_search_suggestion_not_showing()
+    {
+        waitForElementNotVisibleByElement(addon_search_suggestions);
+    }
+
 }
 
