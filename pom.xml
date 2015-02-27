@@ -184,7 +184,7 @@
                         <base-address>https://addons.mozilla.org/</base-address>
                         <live-domain>https://addons.mozilla.org/}</live-domain>
                         <browser>FF</browser>
-                        <browserVer>ANY</browserVer>
+                        <browserVer>35</browserVer>
                         <env>pro</env>
                         <platform>VISTA</platform>
                         <saucemode>${sauce.run}</saucemode>

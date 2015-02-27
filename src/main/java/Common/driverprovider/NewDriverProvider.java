@@ -61,6 +61,9 @@ public class NewDriverProvider {
         saucemode =mode;
         saucekey=System.getenv("SAUCE_ACCESS_KEY");
         saucename=System.getenv("SAUCE_USERNAME");
+
+
+
         //If browser equals IE set driver property as IEWebDriver instance
         if ("IE".equals(browserName)) {
             driver = getIEInstance();
@@ -208,7 +211,7 @@ public class NewDriverProvider {
           firefoxProfile.setAcceptUntrustedCertificates(true);
         }
 
-       caps.setCapability(FirefoxDriver.PROFILE, firefoxProfile);
+      // caps.setCapability(FirefoxDriver.PROFILE, firefoxProfile);
        caps.setCapability(CapabilityType.PLATFORM, platformName);
        caps.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,"20");
         caps.setCapability(CapabilityType.BROWSER_NAME,"Firefox");

@@ -35,7 +35,7 @@ public class POMConfiguration extends AbstractConfiguration {
         ;
         if(browserVer==null || browserVer.isEmpty() )
         {
-            browserVer="ANY";
+            browserVer="35";
         }
 
         platform=System.getProperty("platform");
