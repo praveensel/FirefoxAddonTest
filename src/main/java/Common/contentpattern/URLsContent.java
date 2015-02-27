@@ -52,8 +52,8 @@ public class URLsContent {
     public static final String LOGOUT = "en-US/firefox/users/logout";
     public static final String Search_Updated = "sort=updated";
     public static final String Search_Created = "sort=created";
-    public static final String USER_PROFILE = "wiki/User:%userName%";
-    public static final String SPECIAL_CREATE_NEW_WIKI = "Special:CreateNewWiki";
+    public static final String Collections = "collections";
+    public static final String CollectionsCat = "cat=collections";
     public static final String SPECIAL_WIKI_FACTORY = "wiki/Special:WikiFactory";
     public static final String SPECIAL_WHERE_IS_EXTENSION = "Special:WhereIsExtension";
     public static final String SPECIAL_CONTRIBUTIONS = "wiki/Special:Contributions";
