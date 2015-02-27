@@ -2,7 +2,7 @@ language: java
 
 env:
   global:
-     - secure: fpNKR1UUfWROkEHtpcLrCnzJ1vyDdTc+8/6ecV7/5i/BDc+kHeptVbJNXW3uc9k37JmhAegUty7pS7gUpaFoZEELhduPRtofs044WqNG2FuaMNDY0b1mupQBkYpQObdOc/GpLUfF08VpXaIOXe2P9TdQDJrK3VtJ41BuBm61VMc=
-     - secure: YiHOwsVchdJq9A0/O08aCRK79zvjzzgDmFbqjPtiUZzD9kdMLcXBfPP1WZ4W8aZRZcBG/kNuCI+qkqvrXqhHE42BukZqwIiNR9iwdU2/sJNJuEauUnfAQtIaU2ni62QN1mQ4++G7A7yFA8YFkyHWox8UV0/vb6pFpjKhp6q/8QE=
+    - secure: EbDpJjDBWghPu37GVv2y9hmojg7WZKuWwnwcaMIihRGURAfSh6QcDn+RmWKP67Bknq4TqJULY3HUOuEG7OlXGTOFUzO4yqKo6DhkhXv1/IoBzlbmIlKR55hF1/JEl/5v8HpzXNEWWSvfSuPCgTTa6sV9JbxLXRAxNgk8z/vKp0w=
+    - secure: WH7AJ2eDnVv6tK4NUvL9IlObG+xp1JEicvoAKcolQ1LBjcZFKJGvkNicEvfBWq2kanOoHdKp96gpnevBeJo3U1ioSqAFUcD3fpzLmcrckVXhNboi7Edmf894b0vVaXcf8BgV4KoSCkvpJNBkd491U69CR+dx13R4AnD2b2LbjYo=
 
 script: "mvn test -PSauceProfile"
