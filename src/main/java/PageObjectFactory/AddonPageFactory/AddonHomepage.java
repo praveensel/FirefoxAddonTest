@@ -5,6 +5,7 @@ import Common.contentpattern.URLsContent;
 import Common.core.Assertion;
 import PageObjectFactory.mozBasePageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,9 @@ public class AddonHomepage extends mozBasePageObject {
 
     @FindBy(xpath = "//button[text()='Go']")
     public WebElement go;
+
+    @FindBy(css="#site-search-suggestions > div > ul")
+    public WebElement search_suggestion;
 
     @FindBy(css = "#pjax-results > div.items > div:nth-child(1) > div.info > h3 > a")
     public WebElement First_addon_result;
@@ -117,6 +121,10 @@ public class AddonHomepage extends mozBasePageObject {
     public WebElement collectionsLink;
 
 
+    @FindBy(css = "#addon > hgroup > h1 > span:nth-child(1)")
+    public WebElement addon_name_title;
+
+
 
 
 
@@ -191,7 +199,8 @@ public class AddonHomepage extends mozBasePageObject {
         getElementByText(filter_results,"Category\n" +
                 "All Add-ons");
         getElementByText(filter_results,"Works with\n" +
-                "Firefox 35.0");
+                "Firefox 35.0\n" +
+                "Windows");
         getElementByText(filter_results,"FTag\n" +
                 "All Tags");
 
@@ -349,13 +358,16 @@ public class AddonHomepage extends mozBasePageObject {
 
     }
 
-    public String navigate_by_clicking_on_suggestion_list()  {
+    public String get_addon_name_from_suggestion_list()  {
 
         int si=addon_search_suggestion.size();
         WebElement el1=driver.findElement(By.xpath("//div[2]/div[1]/div[2]/div[1]/form/div/div/ul/li["+(si-(si-2))+"]/a/span"));
-        String elementtext=el1.getText();
+        String addon_name=getElementText(el1);
         el1.click();
-        return elementtext;
+        PageObjectLogging.log("get_addon_name_from_suggestion_list", "Name of the addon clicked  "+addon_name, true);
+        return addon_name;
+
+
 
     }
 
@@ -380,8 +392,40 @@ public class AddonHomepage extends mozBasePageObject {
 
     public void check_search_suggestion_not_showing()
     {
-        waitForElementNotVisibleByElement(addon_search_suggestions);
+      waitForElementNotVisibleByElement(addon_search_suggestions);
     }
 
+    public void get_name_from_suggestion_addon_list()
+    {
+        String e=(getElementText(addon_search_suggestion.get(1)));
+        System.out.println(e);
+
+    }
+
+    public Dimension getSearch_suggestion_Dimension() {
+
+        return addon_search_suggestions.getSize();
+    }
+
+    public void verify_search_result_not_resized(Dimension source) {
+        verifyElementResized(source, addon_search_suggestions);
+    }
+
+
+    public void VerifyClickedAddonLoads() {
+
+        String clickedAddonName=get_addon_name_from_suggestion_list();
+        String loadedAddonName=get_the_title_of_addon();
+        Assertion.assertEquals(clickedAddonName,loadedAddonName);
+        PageObjectLogging.log("VerifyClickedAddonLoads","The addon title matches",true,driver);
+    }
+    public String get_the_title_of_addon()
+    {
+        waitForElementByElement(addon_name_title);
+        String addon_name =getElementText(addon_name_title);
+        PageObjectLogging.log("get_the_title_of_addon", "Name of the addon Loaded  "+addon_name, true);
+        return addon_name;
+
+    }
 }
 

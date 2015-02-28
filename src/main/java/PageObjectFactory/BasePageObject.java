@@ -74,6 +74,8 @@ protected WebElement followedButton;
 
         public static String getElementText(WebElement element)
         {
+
+            PageObjectLogging.log("getElementText","Retrieved element text "+element.getText(),true);
             return element.getText();
         }
 
@@ -438,6 +440,7 @@ protected WebElement followedButton;
 
         public void sendKeys(WebElement pageElem, String keysToSend) {
             try {
+                pageElem.clear();
                 pageElem.sendKeys(keysToSend);
             } catch (Exception e) {
                 PageObjectLogging.log("sendKeys", e.getMessage(), false);
@@ -921,15 +924,15 @@ public void verifyElementResized(Dimension source, WebElement element) {
         int targetWidth = target.width;
         int targetHeight = target.height;
 
-        if (sourceWidth == targetWidth && sourceHeight == targetHeight) {
+        if (!(sourceWidth == targetWidth && sourceHeight == targetHeight)) {
         Assertion.fail(
-        "Element did not resize. Old dimension (" + sourceWidth + "," + sourceHeight + ") " +
+        "Element did  resize. Old dimension (" + sourceWidth + "," + sourceHeight + ") " +
         "New dimension (" + targetWidth + "," + targetHeight + ")"
         );
         }
         PageObjectLogging.log(
         "verifyElementMoved",
-        "Element did resize. From (" + sourceWidth + "," + sourceHeight + ") to ("
+        "Element did not resize. From (" + sourceWidth + "," + sourceHeight + ") to ("
         + targetWidth + "," + targetHeight + ")",
         true,
         driver

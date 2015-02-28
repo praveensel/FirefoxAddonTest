@@ -19,7 +19,7 @@ public class mozBasePageObject extends BasePageObject {
 
 
     public AddonHomepage Openaddonspageobject(String baseUrl) {
-      //  getUrl(baseUrl );
+       getUrl(baseUrl );
         PageObjectLogging.log("openAddOnPageObject", baseUrl + " opened", true);
         return new AddonHomepage(driver);
     }

@@ -7,7 +7,6 @@ import Common.templates.NewTestTemplateBeforeClass;
 
 import PageObjectFactory.AddonPageFactory.AddonHomepage;
 import PageObjectFactory.AddonPageFactory.AddonPage;
-import PageObjectFactory.BasePageObject;
 import PageObjectFactory.Collections.CollectionsPage;
 import PageObjectFactory.ThemesPageFactory.ThemesPage;
 import PageObjectFactory.mozBasePageObject;
@@ -25,7 +24,7 @@ public class AmoDetails_Test extends NewTestTemplateBeforeClass {
 
 
     @Test()
-    public void Statistics_verify_Group_by_period_menu()
+        public void Statistics_verify_Group_by_period_menu()
     {
         mozBasePageObject base = new mozBasePageObject(driver);
         base.Openaddonspageobject(baseurl);
@@ -186,12 +185,10 @@ public class AmoDetails_Test extends NewTestTemplateBeforeClass {
     public void Follow_any_search_suggestion_by_clicking_it()
     {
         AddonHomepage AddonHomepage =PageFactory.initElements(driver,AddonHomepage.class);
-        AddonPage addonPage=PageFactory.initElements(driver,AddonPage.class);
         mozBasePageObject base = new mozBasePageObject(driver);
         base.Openaddonspageobject(baseurl);
         AddonHomepage.TypeSearchTerm("email") ;
-        Assertion.assertEquals(AddonHomepage.navigate_by_clicking_on_suggestion_list().toLowerCase(),addonPage.get_title_Addon().toLowerCase());
-
+        AddonHomepage.VerifyClickedAddonLoads();
     }
 
     @Test
@@ -239,6 +236,18 @@ public class AmoDetails_Test extends NewTestTemplateBeforeClass {
         base.pressEscKey();
 
         AddonHomepage.check_search_suggestion_not_showing();
+    }
+
+    @Test
+    public void Verify_that_Long_Name_suggestions_are_truncate()
+    {
+        AddonHomepage AddonHomepage = PageFactory.initElements(driver, AddonHomepage.class);
+        mozBasePageObject base = new mozBasePageObject(driver);
+        base.Openaddonspageobject(baseurl);
+        AddonHomepage.TypeSearchTerm("email");
+        org.openqa.selenium.Dimension source=AddonHomepage.getSearch_suggestion_Dimension();
+        AddonHomepage.TypeSearchTerm("flash video downloader");
+        AddonHomepage.verify_search_result_not_resized(source);
     }
 
 

@@ -17,9 +17,8 @@ captcha.txt
 config.xml
 src/test/java/com/wikia/webdriver/Common/Properties/PropertiesSetter.java
 config.yml
-
+config_sample.yml
 Firefox.iml
 .idea
 logs
 src/main/java/TestSuites/loadyml.java
-config_sample.yml
